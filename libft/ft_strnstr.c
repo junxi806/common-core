@@ -1,0 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjun-xi <gjun-xi@student.42singapore.sg>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/06 03:52:31 by gjun-xi           #+#    #+#             */
+/*   Updated: 2025/12/07 18:02:08 by gjun-xi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	if (*little == '\0')
+		return ((char *)big);
+	while (i < len && big[i] != '\0')
+	{
+		j = 0;
+		while (big[i + j] == little[j] && big[i + j] != '\0'
+			&& little[j] != '\0' && (i + j) < len)
+			j++;
+		if (little[j] == '\0')
+			return ((char *)(big + i));
+		i++;
+	}
+	return (NULL);
+}
