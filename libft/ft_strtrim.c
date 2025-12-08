@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjun-xi <gjun-xi@student.42singapore.sg>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/05 18:00:58 by gjun-xi           #+#    #+#             */
-/*   Updated: 2025/12/09 03:47:44 by gjun-xi          ###   ########.fr       */
+/*   Created: 2025/12/07 21:08:46 by gjun-xi           #+#    #+#             */
+/*   Updated: 2025/12/08 16:21:44 by gjun-xi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	dst_len;
-	size_t	src_len;
+	size_t	start;
+	size_t	end;
+	size_t	len;
+	char	*p;
 
-	src_len = ft_strlen(src);
-	if (size == 0)
-		return (src_len);
-	dst_len = 0;
-	while (dst_len < size && dst[dst_len] != '\0')
-		dst_len++;
-	if (dst_len == size)
-		return (size + src_len);
-	size -= dst_len;
-	dst += dst_len;
-	while (--size && *src)
-		*dst++ = *src++;
-	*dst = '\0';
-	return (dst_len + src_len);
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && ft_strchr(set, s1[start]) != NULL)
+		start++;
+	while (end > start && ft_strchr(set, s1[end - 1]) != NULL)
+		end--;
+	len = end - start;
+	p = malloc((len + 1) * sizeof(char));
+	if (!p)
+		return (NULL);
+	ft_strlcpy(p, s1 + start, len + 1);
+	return (p);
 }

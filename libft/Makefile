@@ -6,7 +6,7 @@
 #    By: gjun-xi <gjun-xi@student.42singapore.sg>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 18:43:03 by gjun-xi           #+#    #+#              #
-#    Updated: 2025/12/07 19:12:25 by gjun-xi          ###   ########.fr        #
+#    Updated: 2025/12/09 02:45:22 by gjun-xi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
 	ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
-	ft_atoi.c ft_calloc.c ft_strdup.c 
+	ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
+	ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 OBJ = $(SRC:.c=.o)
 
 BNS = ft_lstnew.c
