@@ -6,7 +6,7 @@
 /*   By: gjun-xi <gjun-xi@student.42singapore.sg>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 21:18:04 by gjun-xi           #+#    #+#             */
-/*   Updated: 2025/12/20 22:06:37 by gjun-xi          ###   ########.fr       */
+/*   Updated: 2025/12/21 02:59:16 by gjun-xi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-t_list *ft_lstnew(void *content);
+t_list				*ft_lstnew(void *content);
+void				ft_lstadd_front(t_list **lst, t_list *new);
 #endif

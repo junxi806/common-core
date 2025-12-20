@@ -1,4 +1,4 @@
-# **************************************************************************** #
+#**************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,7 +6,7 @@
 #    By: gjun-xi <gjun-xi@student.42singapore.sg>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 18:43:03 by gjun-xi           #+#    #+#              #
-#    Updated: 2025/12/20 20:23:27 by gjun-xi          ###   ########.fr        #
+#    Updated: 2025/12/21 02:56:30 by gjun-xi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,10 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen
 	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 OBJ = $(SRC:.c=.o)
 
+BNS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
+      ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+BNS_OBJ = $(BNS:.c=.o)
+
 HEADER = libft.h
 
 all : $(NAME)
@@ -29,11 +33,14 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
 
+bonus: $(OBJ) $(BNS_OBJ)
+	@ar rcs $(NAME) $(OBJ) $(BNS_OBJ)
+
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJ) 
+	@rm -f $(OBJ) $(BNS_OBJ)
 
 fclean: clean
 	@rm -f $(NAME)

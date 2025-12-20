@@ -6,8 +6,16 @@
 /*   By: gjun-xi <gjun-xi@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 19:41:50 by gjun-xi           #+#    #+#             */
-/*   Updated: 2025/12/20 20:04:07 by gjun-xi          ###   ########.fr       */
+/*   Updated: 2025/12/21 03:28:28 by gjun-xi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
+}
