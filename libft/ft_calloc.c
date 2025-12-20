@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjun-xi <gjun-xi@student.42singapore.sg>   +#+  +:+       +#+        */
+/*   By: gjun-xi <gjun-xi@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/07 18:45:01 by gjun-xi           #+#    #+#             */
-/*   Updated: 2025/12/07 19:37:27 by gjun-xi          ###   ########.fr       */
+/*   Created: 2025/12/20 19:47:38 by gjun-xi           #+#    #+#             */
+/*   Updated: 2025/12/20 19:58:27 by gjun-xi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	int		count;
 
 	count = nmemb * size;
+	if (nmemb != 0 && count / nmemb != size)
+		return (NULL);
 	p = malloc(nmemb * size);
 	if (!p)
 		return (NULL);

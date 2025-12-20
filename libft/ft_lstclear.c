@@ -1,30 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjun-xi <gjun-xi@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/20 19:59:34 by gjun-xi           #+#    #+#             */
-/*   Updated: 2025/12/20 19:59:36 by gjun-xi          ###   ########.fr       */
+/*   Created: 2025/12/20 20:05:47 by gjun-xi           #+#    #+#             */
+/*   Updated: 2025/12/20 20:05:52 by gjun-xi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char			*res;
-	unsigned int	s_len;
-
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-		return (ft_strdup(""));
-	if (len > s_len - start)
-		len = s_len - start;
-	res = malloc((len + 1) * sizeof(char));
-	if (!res)
-		return (NULL);
-	ft_strlcpy(res, s + start, len + 1);
-	return (res);
-}
