@@ -6,7 +6,7 @@
 /*   By: gjun-xi <gjun-xi@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 19:49:29 by gjun-xi           #+#    #+#             */
-/*   Updated: 2025/12/20 19:49:31 by gjun-xi          ###   ########.fr       */
+/*   Updated: 2025/12/21 03:36:11 by gjun-xi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int	ft_isalnum(int c)
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	return (0);
 }
