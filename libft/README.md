@@ -1,6 +1,7 @@
 *This project has been created as part of the 42 curriculum by <gjun-xi>*
 
 **Description**
+
 _Goal_: 
 This project (Libft) aims to create a library storing all the functions listed below. 
 
@@ -10,15 +11,21 @@ _Overview_:
 The functions in this library are those that are commonly used in the 42 curriculum. This includes char/int manipulation, memory allocation , str manipulation, list manipulation functions. The details of each function can be found below their respective declarations.
 
 **Instructions**
+
 The Makefile has the following commands with the relevant details attached.
+
 **make**
 - runs make all.
+
 **make all**
 - creates object files from the function files and compiles into libft.a.
+
 **make clean**
 - removes object files.
+
 **make fclean**
 - runs clean and removes libft.a.
+
 **make re**
 - remake all files i.e. runs fclean then make all
 
