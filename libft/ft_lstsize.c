@@ -6,8 +6,21 @@
 /*   By: gjun-xi <gjun-xi@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 20:04:32 by gjun-xi           #+#    #+#             */
-/*   Updated: 2025/12/20 20:04:40 by gjun-xi          ###   ########.fr       */
+/*   Updated: 2025/12/21 14:40:58 by gjun-xi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ft_lstsize(t_list *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
+}

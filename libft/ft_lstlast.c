@@ -6,8 +6,17 @@
 /*   By: gjun-xi <gjun-xi@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 20:04:57 by gjun-xi           #+#    #+#             */
-/*   Updated: 2025/12/20 20:05:02 by gjun-xi          ###   ########.fr       */
+/*   Updated: 2025/12/21 14:44:11 by gjun-xi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (lst);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
+}

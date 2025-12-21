@@ -6,8 +6,16 @@
 /*   By: gjun-xi <gjun-xi@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 20:05:33 by gjun-xi           #+#    #+#             */
-/*   Updated: 2025/12/20 20:05:36 by gjun-xi          ###   ########.fr       */
+/*   Updated: 2025/12/21 15:02:13 by gjun-xi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
+}
