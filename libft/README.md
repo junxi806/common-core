@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by <gjun-xi>*
+*This project has been created as part of the 42 curriculum by gjun-xi.*
 
 **Description**
 
@@ -248,15 +248,19 @@ int, char));`
 - Parameters: n (integer to output), fd (file descriptor on which to write). 
 - Description: Outputs the integer n to the specified file descriptor.
 
-*`t_list` struct*
+**t_list structure**
 
-`typedef struct s_list
+`typedef struct s_list`
+
 {
-void *content;
-struct s_list *next;
-} t_list;`
 
-Members: 
+`void *content;`
+
+`struct s_list *next;`
+
+`} t_list;`
+
+*Members*: 
 
 - content: The data contained in the node. Using void * allows you to store any type of data.
 - next: The address of the next node, or NULL if the current node is the last one.
