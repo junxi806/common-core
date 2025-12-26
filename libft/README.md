@@ -39,6 +39,7 @@ To use the functions in the library, include the following in your code
 - AI for comments on code for better generalisability.
 
 **Detailed Description**
+
 `int ft_isalpha (int c);`
 
 - Parameter: c.
@@ -88,8 +89,9 @@ To use the functions in the library, include the following in your code
 
 `void *ft_memcpy (void *dest, const void *src, size_t n);`
 
-- Parameters: dst (destination memory buffer), src (source memory buffer), n (number of bytes).
+- Parameters: dest (destination memory buffer), src (source memory buffer), n (number of bytes).
 - Description: Copies n bytes from src to dst. Note: Overlapping regions of src and dst would result in undefined behaviour (use `ft_memmove` instead), src is read only.
+- Return Value: A pointer to start of dest.
 
 `void *ft_memmove (void *dest, const void *src, size_t n);`
 
@@ -109,52 +111,204 @@ To use the functions in the library, include the following in your code
 - Description: Appends src to dst up to dstsize - 1, NULL-terminates dst as long as there is at least one byte free in dst. Note: Both src and dst must be NULL-terminated, src is read only.
 - Return Value: Initial dst length + src length.
  
-CAA221225 1911
+`int ft_toupper(int c);`
 
-int ft_toupper(int c);
-Converts lowercase letter to uppercase; otherwise returns c unchanged.
-Parameters: c (int).
+- Parameter: c.
+- Description: Converts lowercase letter to uppercase. Note: If c is neither an unsigned char value nor EOF, the behavior of these functions is undefined.
+- Return Value: The value returned is that of the converted letter, or c if the conversion was not possible.
 
-int ft_tolower(int c);
-Converts uppercase letter to lowercase; otherwise returns c unchanged.
-Parameters: c (int).
+`int ft_tolower(int c);`
 
-char *ft_strchr(const char *s, int c);
-Returns pointer to first occurrence of character (char)c in s (or to '\0' if c is 0), or NULL.
-Parameters: s (string), c (character as int).
+- Parameter: c.
+- Description: Converts uppercase letter to lowercase. Note: If c is neither an unsigned char value nor EOF, the behavior of these functions is undefined.
+- Return Value: The value returned is that of the converted letter, or c if the conversion was not possible.
 
-char *ft_strrchr(const char *s, int c);
-Returns pointer to last occurrence of (char)c in s, or NULL.
-Parameters: s, c.
+`char *ft_strchr(const char *s, int c);`
 
-int ft_strncmp(const char *s1, const char *s2, size_t n);
-Compares up to n bytes of s1 and s2; returns <0, 0, or >0.
-Parameters: s1, s2 (strings), n (max bytes).
+- Parameters: s (string), c (character as int).
+- Description: Returns a pointer to the first occurrence of character c in string s. Note: s is read only.
+- Return Value: The pointer returned is the  matched  character or NULL if the character is not found. The terminating  null  byte  is  considered part  of the string, so that if c is specified as '\0', these functions return a pointer to the terminator.
 
-void *ft_memchr(const void *s, int c, size_t n);
-Searches first n bytes of s for byte (unsigned char)c; returns pointer or NULL.
-Parameters: s (buffer), c (byte), n (bytes).
+`char *ft_strrchr(const char *s, int c);`
 
-int ft_memcmp(const void *s1, const void *s2, size_t n);
-Compares first n bytes of s1 and s2; returns <0, 0, or >0.
-Parameters: s1, s2 (buffers), n.
+- Parameters: s (string), c (character as int to be found).
+- Description: Returns a pointer to the last occurrence of character c in string s. Note: s is read only.
+- Return Value: The pointer returned is the  matched  character or NULL if the character is not found. The terminating null byte is considered part of the string, so that if c     is specified as '\0', these functions return a pointer to the terminator.
 
-char *ft_strnstr(const char *haystack, const char *needle, size_t len);
-Finds first occurrence of needle in haystack, searching at most len chars; returns pointer or NULL.
-Parameters: haystack (string to search), needle (substring), len (max search length).
+`int ft_strncmp(const char *s1, const char *s2, size_t n);`
 
-int ft_atoi(const char *str);
-Converts the initial portion of str to an int (handles leading whitespace and optional sign).
-Parameters: str (string).
+- Parameters: s1 (string), s2 (string), n (max number of bytes compared).
+- Description: Compares up to n bytes of s1 and s2. `ft_strcmp()`  returns  an  integer indicating the result of the comparison, as follows:
+       •  0, if the s1 and s2 are equal;
+       •  a negative value if s1 is less than s2;
+       •  a positive value if s1 is greater than s2. 
+Note: s1, s2 is read only.
+- Return Value: Returns an integer less than, equal to, or greater than zero if the first n bytes of s1 is found, respectively, to be less than, to match, or be greater than s2.
 
-void *ft_calloc(size_t nmemb, size_t size);
-Allocates nmemb * size bytes and zero-initializes them (if nmemb or size is 0, returns a unique freeable pointer).
-Parameters: nmemb (element count), size (bytes per element).
+`void *ft_memchr(const void *s, int c, size_t n);`
 
-char *ft_strdup(const char *s1);
-Allocates and returns a duplicate of string s1.
-Parameters: s1 (source
+- Parameters: s (memory buffer), c (character as int to be found), n (number of bytes searched).
+- Description: Scans the initial n bytes of the memory area pointed to by s for the first instance of c. Both c and the bytes of the memory area pointed to by s are interpreted as unsigned char.
+- Return Value: Returns a pointer to the matching byte or NULL if the character does not occur in the given memory area.
 
-Bonus part — Linked list functions
+`int ft_memcmp(const void *s1, const void *s2, size_t n);`
 
-t_list *ft_lstnew(void *content);
+- Parameters: s1 (memory buffer), s2 (memory buffer), n (number of bytes searched).
+- Description: Compares up to n bytes of s1 and s2. Returns an integer indicating the result of the comparison, as follows:
+       •  0, if the s1 and s2 are equal;
+       •  a negative value if s1 is less than s2;
+       •  a positive value if s1 is greater than s2.
+Note: s1, s2 is read only.
+- Return Value: Returns an integer less than, equal to, or greater than zero if the first n bytes of s1 is found, respectively, to be less than, to match, or be greater than s2. 
+
+`char *ft_strnstr(const char *big, const char *little, size_t len);`
+
+- Parameters: big (string to search), little (substring to find), len (max search length).
+- Description: Locates the first occurrence of little in big, searching at most len characters. Note: Characters after a `\0` are not searched.
+- Return Value: If little is an empty string, big is returned; if little occurs nowhere in big, NULL is returned; otherwise a pointer to the first character of the first occurrence of little is returned.
+
+`int ft_atoi(const char *nptr);`
+
+- Parameters: nptr (string pointer).
+- Description: Converts the initial portion of the string pointer to by nptr to an int. Note: Handles starting whitespace and optional signs, converts up to first occurence of non-digit char, does not detect errors, nptr is read only.
+- Return Value: The converted value or 0 on error.
+
+`void *ft_calloc(size_t nmemb, size_t size);`
+
+- Parameters: nmemb (number of elements), size (bytes per element).
+- Description: Allocates memory for an array of nmemb elements of size bytes each and returns a pointer to the allocated memory. The memory is set to zero. If nmemb or size is 0, then calloc() returns a unique pointer value that can later be successfully passed to free(). 
+- Return Value: Returns a pointer to the allocated memory, which is suitably aligned for any type that  fits  into the  requested size or less. On error, these functions return NULL. Attempting to allocate more than `PTRDIFF_MAX` bytes is considered an error, as an object that large could cause later pointer subtraction to overflow (i.e nmemb * size > `size_t` causing overflow). 
+
+`char *ft_strdup(const char *s);`
+
+- Parameter: s (string)
+- Description: Returns a pointer to a new string which is a duplicate of string s. Memory  for  the new string is obtained with malloc(3), and can be freed with free(3).
+- Return Value: On success, the strdup() function returns a pointer to the duplicated string. It returns NULL if insufficient memory was available. 
+
+`char *ft_substr(char const *s, unsigned int start,
+size_t len);`
+
+- Parameters: s (string), start (starting index), len(max length of substring).
+- Description: Allocates memory using malloc(3) and returns a substring from the string s. The substring starts at index start and has a maximum length of len.
+- Return Value: Returns a pointer to the substring or NULL if memory allocation fails.
+
+`char *ft_strjoin(char const *s1, char const *s2);`
+
+- Parameters: s1 (prefix string), s2 (suffix string)
+- Description: Allocates memory using malloc(3) and returns a new string, which is the result of concatenating s1 and s2.
+- Return Value: Returns a pointer to the string created or NULL if memory allocation fails.
+
+`char *ft_strtrim(char const *s1, char const *set);`
+
+- Parameters: s1 (string to be trimmed), set (string containing set of characters to be removed).
+- Description: Allocates memory using malloc(3) and returns a copy of s1 with characters from set removed from the beginning and the end.
+- Return Value: Returns a pointer to the trimmed string created or NULL if memory allocation fails.
+
+`char **ft_split(char const *s, char c);`
+
+- Parameters: s (string to be split), c (delimiter character).
+- Description: Allocates memory using malloc(3) and returns an array of strings obtained by splitting s using the character c as a delimiter. The array will end with a NULL pointer.
+- Return Value: Returns an array of the new strings resulting from the split or NULL if memory allocation fails.
+
+`char *ft_itoa(int n);`
+
+- Parameter: n (integer to convert).
+- Description: Allocates memory using malloc(3) and returns a string representing the integer received as an argument. Negative numbers will be handled.
+- Return Value: Returns a pointer to the string representing n or NULL if memory allocation fails.
+
+`char *ft_strmapi(char const *s, char (*f)(unsigned
+int, char));`
+
+- Parameters: s (string to iterate over), f (function to apply to each character).
+- Description: Applies the function f to each character of the string s, passing its index as the first argument and the character itself as the second. A new string is created using malloc(3) to store the results from the successive applications of f.
+- Return Value: The string created from the successive applications of f or NULL if memory allocation fails.
+
+`void ft_striteri(char *s, void (*f)(unsigned int, char*));`
+
+- Parameters: s (string to iterate over), f (function to apply to each character).
+- Description: Applies the function f to each character of the string s, passing its index as the first argument. Each character is passed by address to f so it can be modified if necessary.
+
+`void ft_putchar_fd(char c, int fd);`
+
+- Parameters: c (character to output), fd (file descriptor on which to write).
+- Description: Outputs the character c to the specified file descriptor.
+
+`void ft_putstr_fd(char *s, int fd);`
+
+- Parameters: s (string to output), fd (file descriptor on which to write).
+- Description: Outputs the string s to the specified file descriptor.
+
+`void ft_putendl_fd(char *s, int fd);`
+
+- Parameters: s (string to output), fd (file descriptor on which to write).
+- Description: Outputs the string s to the specified file descriptor followed by a newline.
+
+`void ft_putnbr_fd(int n, int fd);`
+
+- Parameters: n (integer to output), fd (file descriptor on which to write). 
+- Description: Outputs the integer n to the specified file descriptor.
+
+*`t_list` struct*
+
+`typedef struct s_list
+{
+void *content;
+struct s_list *next;
+} t_list;`
+
+Members: 
+
+- content: The data contained in the node. Using void * allows you to store any type of data.
+- next: The address of the next node, or NULL if the current node is the last one.
+
+`t_list *ft_lstnew(void *content);`
+
+- Parameter: content (content to store in the new node).
+- Description: Allocates memory using malloc(3) and returns a new node. The content member variable is initialized with the given parameter content. The variable next is initialized to NULL.
+- Return Value: Returns a pointer to the new node.
+
+`void ft_lstadd_front(t_list **lst, t_list *new);`
+
+- Parameters: lst (address of a pointer to the first node of  a list), new (address of a pointer to the node to be added).
+- Description: Adds the node new at the beginning of the list.
+
+`int ft_lstsize(t_list *lst);`
+
+- Parameter: lst (pointer to the first node of the list).
+- Description: Counts the number of nodes in the list.
+- Return Value: Returns the length of the list.
+
+`t_list *ft_lstlast(t_list *lst);`
+
+- Parameter: lst (pointer to the first node of the list).
+- Description: Returns the last node of the list.
+- Return Value: Returns last node of the list.
+
+`void ft_lstadd_back(t_list **lst, t_list *new);`
+
+- Parameters: lst (address of a pointer to the first node of the list), new (address of a pointer to the node to be added).
+- Description: Adds the node new at the end of the list.
+
+`void ft_lstdelone(t_list *lst, void (*del)(void
+*));`
+
+- Parameters: lst (pointer to the node to free), del (address of the function used to delete the content).
+- Description: Frees the content in lst using the function del. Free the node itself but does NOT free the next node.
+
+`void ft_lstclear(t_list **lst, void (*del)(void
+*));`
+
+- Parameters: lst (address of a pointer to a node), del (address of the function used to delete the content).
+- Description: Deletes and frees the given node and all its successors, using the function del and free(3). Pointer to the list is set to NULL.
+
+`void ft_lstiter(t_list *lst, void (*f)(void *));`
+
+- Parameters: lst (address of a pointer to a node), f (address of the function to apply to each node's content).
+- Description: Iterates through the list lst and applies the function ’f’ to the content of each node.
+
+`t_list *ft_lstmap(t_list *lst, void *(*f)(void *),
+void (*del)(void *));`
+
+- Parameters: lst (address of a pointer to a node), f (address of the function to apply to each node's content), del (address of the function used to delete a node’s content if needed).
+- Description: Creates a new list from the successive application of the function f to each node’s content in the list lst. The del function is used to delete the content of a node if memory allocation fails.
+- Return Value: Returns the new list created or NULL if memory allocation fails.
