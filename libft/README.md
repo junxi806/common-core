@@ -252,7 +252,7 @@ int, char));`
 
 `typedef struct s_list`
 
-{
+`{`
 
 `void *content;`
 
@@ -260,7 +260,7 @@ int, char));`
 
 `} t_list;`
 
-*Members*: 
+*Members* 
 
 - content: The data contained in the node. Using void * allows you to store any type of data.
 - next: The address of the next node, or NULL if the current node is the last one.
